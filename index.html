@@ -5,14 +5,452 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Престисимо - Музички Едукативен Центар</title>
 
-<link rel="stylesheet" href="css.style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#07111f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 8%;
+
+    background:rgba(7,17,31,.85);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:1.7rem;
+    font-weight:800;
+    color:#d4af37;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+    rgba(7,17,31,.85),
+    rgba(7,17,31,.92)),
+    url("prestissimo.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 20px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+    line-height:1.1;
+}
+
+.hero p{
+    font-size:1.15rem;
+    color:#c4d0e0;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+
+    background:linear-gradient(135deg,#d4af37,#f3d47a);
+
+    color:#07111f;
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(212,175,55,.3);
+}
+
+/* SECTIONS */
+
+section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#9db0c7;
+}
+
+/* ABOUT */
+
+.about-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.image-box img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.about-text p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+    line-height:1.8;
+}
+
+/* PACKAGE CARDS */
+
+.package-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.package-card{
+    position:relative;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+}
+
+.package-card:hover{
+    transform:translateY(-10px);
+}
+
+.start{
+    border-top:5px solid #56b87d;
+}
+
+.grow{
+    border-top:5px solid #d4af37;
+}
+
+.pro{
+    border-top:5px solid #ff6f91;
+}
+
+.package-card h3{
+    font-size:2rem;
+    margin-bottom:5px;
+}
+
+.package-card span{
+    color:#cbd5e1;
+}
+
+.package-card ul{
+    margin:25px 0;
+}
+
+.package-card li{
+    margin-bottom:14px;
+    color:#dbe4f0;
+}
+
+.price{
+    font-size:1.8rem;
+    font-weight:700;
+    color:#fff;
+}
+
+.popular{
+    position:absolute;
+
+    top:-15px;
+    right:20px;
+
+    background:#d4af37;
+
+    color:#07111f;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:.8rem;
+    font-weight:700;
+}
+
+/* KIDS PACK */
+
+.kids-card{
+    max-width:800px;
+    margin:auto;
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.kids-card h2{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.kids-card h4{
+    color:#aab7c9;
+    margin-bottom:20px;
+}
+
+.kids-card ul{
+    list-style:none;
+}
+
+.kids-card li{
+    margin:10px 0;
+}
+
+.kids-price{
+    margin-top:25px;
+    font-size:1.2rem;
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.feature-card{
+    background:rgba(255,255,255,.05);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-size:2rem;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+}
+
+.feature-card h3{
+    margin:15px 0;
+    font-size:1.3rem;
+}
+
+.feature-card p{
+    font-size:.95rem;
+    color:#c5d0de;
+}
+
+/* CONTACT */
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+
+    background:rgba(255,255,255,.05);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.contact-box p{
+    margin:15px 0;
+    font-size:1.1rem;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:40px 20px;
+
+    background:#050c16;
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+/* ANIMATION */
+
+.fade-up{
+    animation:fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:2.8rem;
+    }
+
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        gap:15px;
+        font-size:.9rem;
+    }
+
+    .section-title h2{
+        font-size:2.2rem;
+    }
+}
+
+/* MAP */
+
+.map-container{
+    margin-top:20px;
+    width:100%;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.map-container iframe{
+    width:100%;
+    height:280px;
+    border:0;
+}
+
+.map-btn{
+    display:block;
+    margin-top:15px;
+    padding:12px;
+    background:linear-gradient(135deg,#d4af37,#f3d47a);
+    color:#07111f;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:50px;
+    text-align:center;
+    transition:.3s;
+}
+
+.map-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(212,175,55,.25);
+}
+
+@media(max-width:768px){
+    .map-container iframe{
+        height:220px;
+    }
+}
+</style>
+
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <div class="logo">🎵 ПРЕСТИСИМО</div>
 
@@ -24,61 +462,32 @@
     </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
-
     <div class="hero-content fade-up">
-
         <h1>Музички Едукативен Центар</h1>
-
-        <p>
-            Научи пијано или гитара со професионални инструктори
-            во модерна и пријатна средина.
-        </p>
-
-        <a href="#packages" class="btn">
-            Погледни Пакети
-        </a>
-
+        <p>Научи пијано или гитара со професионални инструктори во модерна и пријатна средина.</p>
+        <a href="#packages" class="btn">Погледни Пакети</a>
     </div>
-
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
-
     <div class="section-title">
         <h2>За Престисимо</h2>
     </div>
 
     <div class="about-container">
-
         <div class="image-box">
             <img src="prestisimo.png" alt="Престисимо">
         </div>
 
         <div class="about-text">
-
-            <p>
-                Престисимо е музички едукативен центар кој нуди
-                квалитетна настава по пијано и гитара за деца,
-                тинејџери и возрасни.
-            </p>
-
-            <p>
-                Нашата цел е секој ученик да напредува со сигурност,
-                самодоверба и љубов кон музиката.
-            </p>
-
+            <p>Престисимо е музички едукативен центар кој нуди квалитетна настава по пијано и гитара за деца, тинејџери и возрасни.</p>
+            <p>Нашата цел е секој ученик да напредува со сигурност, самодоверба и љубов кон музиката.</p>
         </div>
-
     </div>
-
 </section>
 
-<!-- PACKAGES -->
 <section class="packages" id="packages">
-
     <div class="section-title">
         <h2>Пакети За Упис</h2>
         <p>Избери го пакетот кој најмногу ти одговара.</p>
@@ -86,101 +495,62 @@
 
     <div class="package-grid">
 
-        <!-- START -->
         <div class="package-card start">
-
             <h3>START</h3>
             <span>Основен пакет</span>
-
             <ul>
                 <li>✓ 4 часа месечно (1x неделно)</li>
                 <li>✓ + 1 час теорија и солфеж месечно</li>
                 <li>✓ Избор на инструмент (гитара или пијано)</li>
             </ul>
-
-            <div class="price">
-                2.500 ден / месец
-            </div>
-
+            <div class="price">2.500 ден / месец</div>
         </div>
 
-        <!-- GROW -->
         <div class="package-card grow">
-
-            <div class="popular">
-                НАЈПОПУЛАРЕН
-            </div>
-
+            <div class="popular">НАЈПОПУЛАРЕН</div>
             <h3>GROW</h3>
             <span>Среден пакет</span>
-
             <ul>
                 <li>✓ 6 часа месечно</li>
                 <li>✓ + 2 часа месечно теорија и солфеж</li>
                 <li>✓ Инструмент (гитара или пијано)</li>
             </ul>
-
-            <div class="price">
-                3.500 ден / месец
-            </div>
-
+            <div class="price">3.500 ден / месец</div>
         </div>
 
-        <!-- PRO -->
         <div class="package-card pro">
-
             <h3>PRO</h3>
             <span>Напреден пакет</span>
-
             <ul>
                 <li>✓ 8 часа месечно (2x неделно)</li>
                 <li>✓ + 2 часа месечно теорија и солфеж</li>
                 <li>✓ + снимање на кавер песна</li>
                 <li>✓ Инструмент (гитара или пијано)</li>
             </ul>
-
-            <div class="price">
-                4.500 ден / месец
-            </div>
-
+            <div class="price">4.500 ден / месец</div>
         </div>
 
     </div>
-
 </section>
 
-<!-- KIDS -->
 <section class="kids-section">
-
     <div class="kids-card">
-
         <h2>🎶 KIDS PACK</h2>
-
         <h4>(4 - 9 години)</h4>
-
         <ul>
             <li>Музички работилници</li>
             <li>Игра + ритам + пеење</li>
         </ul>
-
-        <div class="kids-price">
-            Учество во музичка работилница:
-            <strong>300 ден од час</strong>
-        </div>
-
+        <div class="kids-price">Учество во музичка работилница: <strong>300 ден од час</strong></div>
     </div>
-
 </section>
 
-<!-- WHY US -->
 <section class="features">
-
     <div class="section-title">
         <h2>Зошто Престисимо?</h2>
     </div>
 
     <div class="feature-grid">
-
         <div class="feature-card">
             🎹
             <h3>Пијано</h3>
@@ -204,59 +574,34 @@
             <h3>Настапи</h3>
             <p>Развивање на самодоверба и сценски настап.</p>
         </div>
-
     </div>
-
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
-
     <div class="section-title">
         <h2>Контакт</h2>
     </div>
 
     <div class="contact-box">
-
         <p>📞 Телефон: 070 360 137</p>
-        
+
         <div class="map-container">
-    <iframe
-        src="https://www.google.com/maps?q=Pane+Peshev+28,+Kumanovo,+North+Macedonia&output=embed"
-        loading="lazy"
-        allowfullscreen>
-    </iframe>
-</div>
+            <iframe src="https://www.google.com/maps?q=Pane+Peshev+28,+Kumanovo,+North+Macedonia&output=embed" loading="lazy" allowfullscreen></iframe>
+        </div>
 
-<a 
-    class="map-btn"
-    href="https://www.google.com/maps?q=Pane+Peshev+28,+Kumanovo,+North+Macedonia"
-    target="_blank"
->
-    📍 Open in Google Maps
-</a>
+        <a class="map-btn" href="https://www.google.com/maps?q=Pane+Peshev+28,+Kumanovo,+North+Macedonia" target="_blank">
+            📍 Open in Google Maps
+        </a>
+
         <p>📍 Панче Пешев 28 , Куманово , Македонија</p>
-
     </div>
-
 </section>
 
-<!-- FOOTER -->
 <footer>
-
     <h3>ПРЕСТИСИМО</h3>
-
-    <p>
-        Музички Едукативен Центар
-    </p>
-
-    <p>
-        © 2026 Сите права се задржани.
-    </p>
-
+    <p>Музички Едукативен Центар</p>
+    <p>© 2026 Сите права се задржани.</p>
 </footer>
 
 </body>
 </html>
-</html>
-
